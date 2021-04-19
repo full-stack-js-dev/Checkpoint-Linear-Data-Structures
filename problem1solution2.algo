@@ -1,0 +1,32 @@
+ALGORITHM sets_of_elemnts
+VAR
+    Htab : HASH_TABLE<INTEGER,INTEGER>
+    set1 , set2 : ARRAY_OF INTEGER ;
+    i ,j : INTEGER;
+    count : INTEGER := 1;
+    sum : INTEGER := 0;
+BEGIN
+      //***********************************//
+      //  solution using HASH_TABLE       //
+      //*********************************//
+        Read(set1);
+        Read(set2);
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+        Htab.insert(set1[i],count);
+        count := count+1; 
+    END_FOR
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+        FOR j FROM 0 TO set2.length-1 STEP 1  DO
+            IF (Htab.lookup(set1[i])= set2[i]) THEN
+                Htab.delete(set1[i]);
+            ELSE
+                Htab.insert(set2[i],count+1);
+            END_IF
+        END_FOR
+    END_FOR
+    FOR i FROM 0 TO count STEP 1  DO
+        sum := sum + Htab.get(set1[i])
+    END_FOR
+
+    
+END
