@@ -10,19 +10,20 @@ BEGIN
         //*********************************//
         Read(set1);
         Read(set2);
-        FOR j FROM 0 TO set2.length-1 STEP 1  DO
-            IF (set1[count]= set2[j] AND count <= set1.length-1) THEN
-                count := count+1;
+        FOR i FROM 0 TO set2.length-1 STEP 1  DO
+            IF (set1[count]<> set2[i] AND count <= set1.length-1) THEN
+            sum := sum + set2[i];
             ELSE
-                sum := sum + set2[i];
+               count := count+1; 
             END_IF
         END_FOR
     END_FOR
-      FOR j FROM 0 TO set1.length-1 STEP 1  DO
-            IF (set2[count]= set1[j] AND count <= set2.length-1) THEN
-                count := count+1;
-            ELSE
+      FOR i FROM 0 TO set1.length-1 STEP 1  DO
+            IF (set2[count] <>set1[i] AND count <= set2.length-1) THEN
                 sum := sum + set1[i];
+            ELSE
+            count := count+1;
+                
             END_IF
         END_FOR
     END_FOR
