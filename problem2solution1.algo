@@ -3,6 +3,7 @@ VAR
     set1 , set2 : ARRAY_OF INTEGER ;
     i,j : INTEGER;
     sum : INTEGER := 0;
+    count : INTEGER :=0 ; 
 BEGIN
         //**********************************//
         //     solution using ARRAY         //
@@ -10,11 +11,11 @@ BEGIN
         Read(set1);
         Read(set2);
     FOR i FROM 0 TO set1.length-1 STEP 1  DO
-        FOR j FROM 0 TO set2.length-1 STEP 1  DO
-            IF (set1[i]= set2[j]) THEN
+        
+            IF (set1[i]= set2[count] AND count <= set2.length-1) THEN
                 sum := sum + set1[i];
             ELSE
-                i := i+1;
+                count := count+1;
             END_IF
         END_FOR
     END_FOR
